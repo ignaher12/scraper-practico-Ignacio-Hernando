@@ -1,0 +1,5 @@
+/enunciado
+/node_modules
+
+.vscode/
+*.log
