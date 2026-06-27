@@ -22,7 +22,5 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
         }
     }
 
-    // TODO 4: si el for termina sin return ni throw, lanzar un error
-    //         (TS necesita esto para garantizar que siempre devuelve T o tira)
     throw new Error("withRetry: reintentos agotados");
 }

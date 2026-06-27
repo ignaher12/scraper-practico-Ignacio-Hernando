@@ -3,12 +3,12 @@ import { search } from "./search.js";
 import { Documento, parsePartialResponse, parseRows } from "./parse.js";
 import { config } from "./config.js";
 import { listPage } from "./listPage.js";
-import { sleep } from "./retry.js";
+import { withRetry, sleep } from "./retry.js";
 async function main(){
     
-    const b = await bootstrap();
-    const s = await search(b.viewState)
-    let {html, viewState } = parsePartialResponse(s)
+    const b = await withRetry(() => bootstrap());
+    const first_xml = await withRetry(() => search(b.viewState))
+    let {html, viewState } = parsePartialResponse(first_xml)
     const data = parseRows(html)
     const reg: Documento [] = []
     reg.push(...data)
@@ -16,7 +16,7 @@ async function main(){
 
     while(first < config.MAX_REG){
 
-        const xml = await listPage(viewState, first)
+        const xml = await withRetry(() => listPage(viewState, first))
         const parsed = parsePartialResponse(xml)
         viewState = parsed.viewState
         const filas = parseRows(parsed.html)
