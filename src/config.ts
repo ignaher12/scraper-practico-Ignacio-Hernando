@@ -2,7 +2,7 @@
 
 export const config = {
     BASE_URL: "https://publico.oefa.gob.pe/repdig",
-    QUESTION_URL:"https://publico.oefa.gob.pe/repdig/consulta/consultaDfsai.xhtml",
+    QUESTION_URL:"https://publico.oefa.gob.pe/repdig/consulta/consultaTfa.xhtml",
     FORM_ID: "listarDetalleInfraccionRAAForm",
     DT_ID: "listarDetalleInfraccionRAAForm:dt",
     PAGE_SIZE: 10,

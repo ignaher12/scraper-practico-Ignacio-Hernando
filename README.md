@@ -11,7 +11,7 @@ El enunciado pide scrapear la pagina de jurisprudencia.pj.gob.pe, en este caso s
 
 ## Qué hace
 
-- Navega todo el listado paginado (683 páginas / ~6827 registros - en la ultima fecha probado).
+- Navega todo el listado paginado (176 páginas / 1753 registros - en la ultima fecha probado).
 - Por cada documento extrae: número de expediente, administrado, descripción de la unidad,
   sector, número de resolución, y el identificador del PDF.
 - Descarga el PDF de cada documento, con nombre descriptivo (el que entrega el servidor).

@@ -13,7 +13,9 @@ function esPdf(data: ArrayBuffer): boolean {
 
 async function bajarPdfs(filas: Documento[], viewState: string, failed: Documento[]){
     for (const fila of filas){
+        if(fila.uuid === '') continue
         try {
+
             const { data, filename } = await withRetry(
                 () => downloadPdf(viewState, fila.componenteId, fila.uuid)
             )
@@ -80,9 +82,12 @@ async function main(){
         }
 
     }
-    console.log(`\n Listo. ${reg.length} registros, ${reg.length - failed.length} PDFs OK, ${failed.length} fallidos.`)
+
+    const sinPdf = reg.filter(d => d.motivoPdf !== '').length
+    const descargados = reg.length - sinPdf - failed.length
+    console.log(`${reg.length} registros · ${descargados} PDFs descargados · ${sinPdf} sin PDF (confidencial) · ${failed.length} fallos reales`)
     console.log(` Datos en ${config.DATA_FILE} | PDFs en ${config.OUTPUT_PDF_DIR}`)
-    
+
     saveData(reg)
     saveFailed(failed)
 

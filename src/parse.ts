@@ -19,7 +19,8 @@ export interface Documento{
     sector: string,
     resolucion: string,
     uuid: string,
-    componenteId:string
+    componenteId:string,
+    motivoPdf: string
 }
 
 export function parseRows(html: string){
@@ -40,7 +41,12 @@ export function parseRows(html: string){
         const onclick = tds.eq(6).find('a').attr('onclick')
         const uuid = onclick?.match(/param_uuid':'([0-9a-f-]+)'/)?.[1] ?? ''
         const componenteId = onclick?.match(/\{'([^']+)'/)?.[1] ?? ''
-        filas.push({ expediente, administrador, descripcion, sector, resolucion, uuid, componenteId})
+        let motivoPdf = ''
+        if(uuid === '' && componenteId === ''){
+            motivoPdf = tds.eq(6).text().trim()
+        }
+
+        filas.push({ expediente, administrador, descripcion, sector, resolucion, uuid, componenteId, motivoPdf})
     })
 
     return filas
