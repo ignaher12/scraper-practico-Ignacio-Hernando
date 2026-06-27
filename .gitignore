@@ -1,5 +1,6 @@
 /enunciado
 /node_modules
-
+/output
+src/fixtures/
 .vscode/
 *.log

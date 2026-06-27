@@ -13,5 +13,6 @@ export const config = {
     OUTPUT_PDF_DIR: "output/pdf",
     DATA_FILE: "output/data.json",
     FAILED_FILE: "output/failed.json",
+    MAX_REG: 20
 } as const;
 
