@@ -1,6 +1,8 @@
 import { cliente } from "./http.js";
 import { config } from "./config.js";
 
+// define los parametros del body y headers, y hace el POST para paginar
+
 export async function listPage(viewState: string, first:number, criterio:string = ''){
     const body = new URLSearchParams(
     {

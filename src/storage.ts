@@ -10,6 +10,8 @@ export function ensureDirs(){
 
 }
 
+//almacena JSONs data y failed y los PDFs
+
 export function saveData(docs: Documento[]){
     const parse = JSON.stringify(docs, null, 2)
     writeFileSync(config.DATA_FILE, parse)

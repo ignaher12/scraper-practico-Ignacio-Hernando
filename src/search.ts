@@ -1,6 +1,8 @@
 import { cliente } from "./http.js";
 import { config } from "./config.js";
 
+// define los parametros del body y headers, y hace el POST para la primera busqueda
+
 export async function search(viewState: string, criterio:string = ''){
     const body = new URLSearchParams(
     {
@@ -18,8 +20,6 @@ export async function search(viewState: string, criterio:string = ''){
         [`${config.FORM_ID}:idsector`]: '',
         [`${config.FORM_ID}:j_idt34`]: '',
     })
-
-
 
     const res = await cliente.post(config.QUESTION_URL, body, {headers:{
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',

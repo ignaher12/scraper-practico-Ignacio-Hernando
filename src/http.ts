@@ -3,7 +3,7 @@ import { wrapper } from 'axios-cookiejar-support';
 import { CookieJar } from 'tough-cookie';
 import { config } from './config.js'
 
-// guarda las cookies automaticamente (jsessionid), axion las saca de aca para enviar las request.
+// guarda las cookies automaticamente (jsessionid)
 export const jar = new CookieJar()
 
 // instanciamos axios con el jar dentro, wrapper le sirve la interfaz para utilizar el jar.

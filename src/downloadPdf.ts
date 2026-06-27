@@ -1,5 +1,7 @@
 import { config } from "./config.js"
 import { cliente } from "./http.js"
+
+//se hace la peticion para descargar pdf.
 export async function downloadPdf(viewState: string, componenteId: string, uuid: string){
 
     const body = new URLSearchParams(
